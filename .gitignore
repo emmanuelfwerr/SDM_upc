@@ -1,2 +1,7 @@
-data/xml/
-data/csv/
+# raw and processed data (too large)
+data/xml/*
+data/csv/*
+data/neo4j/*
+
+# secret environment variables
+env/.env
