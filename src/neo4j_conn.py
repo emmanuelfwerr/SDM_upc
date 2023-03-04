@@ -11,15 +11,19 @@ class Neo4jConnection:
         except Exception as e:
             print("Failed to create Neo4j driver: ", e)
 
+    def verify_conn(self):
+        # Verify the connection details
+        self.__driver.verify_connectivity()
+
     def close(self):
         self.__driver.close()
 
     @staticmethod
-    def query(self, query: str, db=None):
+    def query(self, query: str, db: str = None):
         '''
         
         '''
-        assert self.__driver is not None, "Driver not initialized!"
+        assert self.__driver is not None, "Neo4j driver not initialized!"
         session = None
         response = None
         try:
