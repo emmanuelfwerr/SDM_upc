@@ -18,7 +18,6 @@ class Neo4jConnection:
     def close(self):
         self.__driver.close()
 
-    @staticmethod
     def query(self, query: str, db: str = None):
         '''
         
