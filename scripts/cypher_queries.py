@@ -1,5 +1,8 @@
-# Neo4j Graph Init Queries
-neo_init_nodes = [
+# ---*--- Neo4j Cypher Queries ---*---
+# ------------------------------------
+
+# load graph nodes from CSV
+cypher_init_nodes = [
     ''' LOAD CSV with headers FROM 'file:///authors.csv' AS row FIELDTERMINATOR ',' 
         CREATE (:Person {ID: row.ID, Name: row.author});''',
 
@@ -25,7 +28,8 @@ neo_init_nodes = [
         CREATE (:Journal {ID: row.ID, Journal: row.journal});'''
 ]
 
-neo_init_relations = [
+# load graph edges from CSV
+cypher_init_relations = [
     ''' LOAD CSV WITH HEADERS FROM "file:///relation_WritenBy.csv" AS row
         MERGE (paper:Paper {ID: row.start})
         MERGE (person:Person {ID: row.end})
