@@ -5,3 +5,6 @@ data/neo4j/*
 
 # secret environment variables
 env/.env
+
+# virtual environment
+venv
