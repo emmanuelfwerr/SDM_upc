@@ -1,10 +1,16 @@
+import os
+from dotenv import load_dotenv
 from neo4j import GraphDatabase
 from cypher_queries import *
-from ..src.neo4j_conn import Neo4jConnection
 
-# Neo4j Docker Credentials
-URI="neo4j://localhost:7687"
-AUTH = ("neo4j", "password")
+
+# Load secrets from .env
+load_dotenv()
+
+# instantiate neo4j credentials
+URI = os.environ['NEO4J_URI']
+AUTH = (os.environ['NEO4J_USERNAME'], os.environ['NEO4J_PASSWORD'])
+DB_NAME = os.environ['DB_NAME']
 
 
 def main():
@@ -13,7 +19,7 @@ def main():
     '''
     # 
     with GraphDatabase.driver(URI, auth=AUTH) as driver:
-        
+        with driver.session(database=DB_NAME) as session:
 
 
 
