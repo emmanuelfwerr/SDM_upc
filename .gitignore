@@ -3,6 +3,10 @@ data/xml/*
 data/csv/*
 data/neo4j/*
 
+# pycharm and vscode
+.idea
+.vscode
+
 # secret environment variables
 env/.env
 
