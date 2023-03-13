@@ -1,7 +1,10 @@
 # ---*--- Neo4j Cypher Queries ---*---
 # ------------------------------------
 
-# load graph nodes from CSV
+# data path
+path = ''
+
+# A.2 - load graph nodes from CSV
 cypher_init_nodes = [
     ''' LOAD CSV with headers FROM 'file:///authors.csv' AS row FIELDTERMINATOR ',' 
         CREATE (:Person {ID: row.ID, Name: row.author});''',
@@ -24,11 +27,11 @@ cypher_init_nodes = [
     ''' LOAD CSV with headers FROM 'file:///volume.csv' AS row FIELDTERMINATOR ',' 
         CREATE (:Volume {ID: row.ID, Volume: row.volume, Year: row.year});''',
         
-    ''' LOAD CSV with headers FROM 'file:///journal.csv' AS row FIELDTERMINATOR ',' 
+    ''' LOAD CSV with headers FROM '../data/csv/dblp_journal.csv' AS row FIELDTERMINATOR ',' 
         CREATE (:Journal {ID: row.ID, Journal: row.journal});'''
 ]
 
-# load graph edges from CSV
+# A.2 - load graph edges from CSV
 cypher_init_relations = [
     ''' LOAD CSV WITH HEADERS FROM "file:///relation_WritenBy.csv" AS row
         MERGE (paper:Paper {ID: row.start})
@@ -76,4 +79,6 @@ cypher_init_relations = [
         MERGE (volume)-[:PartOf]->(journal);'''
 ]
 
-# other queries...
+# A.3 - extend graph nodes from CSV
+
+# A.3 - extend graph edges from CSV
