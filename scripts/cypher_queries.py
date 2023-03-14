@@ -6,77 +6,92 @@ path = ''
 
 # A.2 - load graph nodes from CSV
 cypher_init_nodes = [
-    ''' LOAD CSV with headers FROM 'file:///authors.csv' AS row FIELDTERMINATOR ',' 
-        CREATE (:Person {ID: row.ID, Name: row.author});''',
+    ''' LOAD CSV with headers FROM 'file:///data/synthetic/papers.csv' AS row FIELDTERMINATOR ';' 
+        CREATE (:Paper {ID: row.id, Title: row.title, Abstract: row.abstract});''',
 
-    ''' LOAD CSV with headers FROM 'file:///conference.csv' AS row FIELDTERMINATOR ',' 
-        CREATE (:Conference {ID: row.ID, Conference: row.Conference});''',
+    ''' LOAD CSV with headers FROM 'file:///data/synthetic/authors.csv' AS row FIELDTERMINATOR ';' 
+        CREATE (:Person {ID: row.id, Name: row.author});''',
 
-    ''' LOAD CSV with headers FROM 'file:///edition.csv' AS row FIELDTERMINATOR ',' 
-        CREATE (:Edition {ID: row.ID, Edition: row.Edition, City: row.City, Year: row.Year});''',
+    ''' LOAD CSV with headers FROM 'file:///data/synthetic/keywords.csv' AS row FIELDTERMINATOR ';' 
+    CREATE (:Keyword {ID: row.keyword_id, Keyword: row.keyword_name});''',
 
-    ''' LOAD CSV with headers FROM 'file:///topic.csv' AS row FIELDTERMINATOR ','
-        CREATE (:Topic {ID: row.ID, Topic: row.Topic});''',
+    ''' LOAD CSV with headers FROM 'file:///data/synthetic/topics.csv' AS row FIELDTERMINATOR ';'
+        CREATE (:Topic {ID: row.topic_id, Topic: row.topic_name});''',
 
-    ''' LOAD CSV with headers FROM 'file:///keyword.csv' AS row FIELDTERMINATOR ',' 
-        CREATE (:Keyword {ID: row.ID, Keyword: row.Keyword});''',
+    ''' LOAD CSV with headers FROM 'file:///data/synthetic/conferences.csv' AS row FIELDTERMINATOR ';' 
+        CREATE (:Conference {ID: row.publisher_id, Conference: row.conference_name});''',
 
-    ''' LOAD CSV with headers FROM 'file:///papers.csv' AS row FIELDTERMINATOR ',' 
-        CREATE (:Paper {ID: row.ID, Title: row.title, Abstract: row.Abstract});''',
+    ''' LOAD CSV with headers FROM 'file:///data/synthetic/conferences.csv' AS row FIELDTERMINATOR ';' 
+        CREATE (:Edition {ID: row.publisherType_id, Edition: row.edition, City: row.venue, Year: row.year, Season: row.season});''',
 
-    ''' LOAD CSV with headers FROM 'file:///volume.csv' AS row FIELDTERMINATOR ',' 
-        CREATE (:Volume {ID: row.ID, Volume: row.volume, Year: row.year});''',
-        
-    ''' LOAD CSV with headers FROM '../data/csv/dblp_journal.csv' AS row FIELDTERMINATOR ',' 
-        CREATE (:Journal {ID: row.ID, Journal: row.journal});'''
+    ''' LOAD CSV with headers FROM 'file:///data/synthetic/journals.csv' AS row FIELDTERMINATOR ';' 
+        CREATE (:Journal {ID: row.publisher_id, Journal: row.journal_name});''',
+
+    ''' LOAD CSV with headers FROM 'file:///data/synthetic/journals.csv' AS row FIELDTERMINATOR ';' 
+        CREATE (:Volume {ID: row.publisherType_id, Volume: row.volume, Year: row.year});'''
 ]
 
 # A.2 - load graph edges from CSV
 cypher_init_relations = [
-    ''' LOAD CSV WITH HEADERS FROM "file:///relation_WritenBy.csv" AS row
-        MERGE (paper:Paper {ID: row.start})
-        MERGE (person:Person {ID: row.end})
+    ''' LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/paper_TO_person.csv" AS row FIELDTERMINATOR ';' 
+        MERGE (paper:Paper {ID: row.paper_id})
+        MERGE (person:Person {ID: row.author_id})
         MERGE (paper)-[:WritenBy]->(person);''',
 
-    '''LOAD CSV WITH HEADERS FROM "file:///relation_CoauthoredBy.csv" AS row
-        MERGE (paper:Paper {ID: row.start})
-        MERGE (person:Person {ID: row.end})
+    ''' LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/paper_TO_person.csv" AS row FIELDTERMINATOR ';' 
+        MERGE (paper:Paper {ID: row.paper_id})
+        MERGE (person:Person {ID: row.co_author_id})
         MERGE (paper)-[:CoauthoredBy]->(person);''',
 
-    '''LOAD CSV WITH HEADERS FROM "file:///relation_CitedBy.csv" AS row
-        MERGE (paper1:Paper {ID: row.start})
-        MERGE (paper2:Paper {ID: row.end})
+    ''' LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/paper_TO_person.csv" AS row FIELDTERMINATOR ';' 
+        MERGE (paper:Paper {ID: row.paper_id})
+        MERGE (person:Person {ID: row.reviewer1_id})
+        MERGE (paper)-[:ReviewedBy]->(person);''',
+
+    ''' LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/paper_TO_person.csv" AS row FIELDTERMINATOR ';' 
+        MERGE (paper:Paper {ID: row.paper_id})
+        MERGE (person:Person {ID: row.reviewer2_id})
+        MERGE (paper)-[:ReviewedBy]->(person);''',
+
+    ''' LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/paper_TO_person.csv" AS row FIELDTERMINATOR ';' 
+        MERGE (paper:Paper {ID: row.paper_id})
+        MERGE (person:Person {ID: row.reviewer3_id})
+        MERGE (paper)-[:ReviewedBy]->(person);''',
+
+    '''LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/paper_TO_paper.csv" AS row
+        MERGE (paper1:Paper {ID: row.cited_paper_id})
+        MERGE (paper2:Paper {ID: row.citing_paper_id})
         MERGE (paper1)-[:CitedBy]->(paper2);''',
 
-    '''LOAD CSV WITH HEADERS FROM "file:///relation_PublishedOn_edition.csv" AS row
-        MERGE (paper:Paper {ID: row.start})
-        MERGE (edition:Edition {ID: row.end})
+    '''LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/paper_TO_edition.csv" AS row
+        MERGE (paper:Paper {ID: row.paper_id})
+        MERGE (edition:Edition {ID: row.edition_id})
         MERGE (paper)-[:PublishedOn]->(edition);''',
 
-    '''LOAD CSV WITH HEADERS FROM "file:///relation_edition_conference.csv" AS row
-        MERGE (edition:Edition {ID: row.start})
-        MERGE (conference:Conference {ID: row.end})
+    '''LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/edition_TO_conference.csv" AS row
+        MERGE (edition:Edition {ID: row.edition_id})
+        MERGE (conference:Conference {ID: row.conference_id})
         MERGE (edition)-[:PartOf]->(conference);''',
 
-    '''LOAD CSV WITH HEADERS FROM "file:///relation_HasKeyword.csv" AS row
-        MERGE (paper:Paper {ID: row.start})
-        MERGE (keyword:Keyword {ID: row.end})
-        MERGE (paper)-[:HasKeyword]->(keyword);''',
-
-    '''LOAD CSV WITH HEADERS FROM "file:///relation_CorrespondTo.csv" AS row
-        MERGE (keyword:Keyword {ID: row.start})
-        MERGE (topic:Topic {ID: row.end})
-        MERGE (keyword)-[:CorrespondTo]->(topic);''',
-
-    '''LOAD CSV WITH HEADERS FROM "file:///relation_PublishedOn_volume.csv" AS row
-        MERGE (paper:Paper {ID: row.start})
-        MERGE (volume:Volume {ID: row.end})
+    '''LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/paper_TO_volume.csv" AS row
+        MERGE (paper:Paper {ID: row.paper_id})
+        MERGE (volume:Volume {ID: row.volume_id})
         MERGE (paper)-[:PublishedOn]->(volume);''',
 
-    '''LOAD CSV WITH HEADERS FROM "file:///relation_volume_journals.csv" AS row
-        MERGE (volume:Volume {ID: row.start})
-        MERGE (journal:Journal {ID: row.end})
-        MERGE (volume)-[:PartOf]->(journal);'''
+    '''LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/volume_TO_journal.csv" AS row
+        MERGE (volume:Volume {ID: row.volume_id})
+        MERGE (journal:Journal {ID: row.journal_id})
+        MERGE (volume)-[:PartOf]->(journal);''',
+
+    '''LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/paper_TO_keyword.csv" AS row
+        MERGE (paper:Paper {ID: row.paper_id})
+        MERGE (keyword:Keyword {ID: row.keyword_id})
+        MERGE (paper)-[:HasKeyword]->(keyword);''',
+
+    '''LOAD CSV WITH HEADERS FROM "file:///data/synthetic/relations/keyword_TO_topic.csv" AS row
+        MERGE (keyword:Keyword {ID: row.keyword_id})
+        MERGE (topic:Topic {ID: row.topic_id})
+        MERGE (keyword)-[:CorrespondTo]->(topic);'''
 ]
 
 # A.3 - extend graph nodes from CSV
