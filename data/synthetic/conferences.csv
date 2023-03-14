@@ -1,11 +1,11 @@
-id;name;edition;venue;season;year
-3329660;Proceedings 6th Workshop on Membrane Computing and Biologically Inspired Process Calculi;MeCBIC 2012;Newcastle, UK;Winter;2012
-3329676;Proceedings 12th International Workshop on Formal Engineering approaches to Software Components and Architectures;FESCA 2015;London, UK;Fall;2015
-3329695;Proceedings 5th Workshop on Horn Clauses for Verification and Synthesis;HCVS 2018;Oxford, UK;Summer;2018
-3329726;Proceedings First International Workshop on Decentralized Coordination of Distributed Processes;DCDP 2010;Amsterdam, Netherlands;Spring;2010
-3329748;Proceedings Eighth International Symposium on Games;GandALF 2017;Roma, Italy;Winter;2017
-3329835;Proceedings Foundations for Interface Technologies;FIT 2010;Paris, France;Spring;2010
-3329838;Proceedings Ninth International Workshop on Reduction Strategies in Rewriting and Programming;WRS 2009;Brasilia, Brazil;Summer;2009
-3329875;Proceedings 9th International Workshop on Developments in Computational Models;DCM 2013;Buenos Aires, Argentina;Summer;2013
-3329942;Proceedings of the 10th International Workshop on Quantum Physics and Logic;QPL 2013;Barcelona, Spain;Summer;2013
-3329984;Proceedings Workshop on Fixed Points in Computer Science;FICS 2013;Turino, Italy;Fall;2013
+publisher_id;conference_name;edition;venue;season;year;publisherType_id
+3329660;Proceedings 6th Workshop on Membrane Computing and Biologically Inspired Process Calculi;MeCBIC 2012;Newcastle, UK;Winter;2012;e001
+3329676;Proceedings 12th International Workshop on Formal Engineering approaches to Software Components and Architectures;FESCA 2015;London, UK;Fall;2015;e002
+3329695;Proceedings 5th Workshop on Horn Clauses for Verification and Synthesis;HCVS 2018;Oxford, UK;Summer;2018;e003
+3329726;Proceedings First International Workshop on Decentralized Coordination of Distributed Processes;DCDP 2010;Amsterdam, Netherlands;Spring;2010;e004
+3329748;Proceedings Eighth International Symposium on Games;GandALF 2017;Roma, Italy;Winter;2017;e005
+3329835;Proceedings Foundations for Interface Technologies;FIT 2010;Paris, France;Spring;2010;e006
+3329838;Proceedings Ninth International Workshop on Reduction Strategies in Rewriting and Programming;WRS 2009;Brasilia, Brazil;Summer;2009;e007
+3329875;Proceedings 9th International Workshop on Developments in Computational Models;DCM 2013;Buenos Aires, Argentina;Summer;2013;e008
+3329942;Proceedings of the 10th International Workshop on Quantum Physics and Logic;QPL 2013;Barcelona, Spain;Summer;2013;e009
+3329984;Proceedings Workshop on Fixed Points in Computer Science;FICS 2013;Turino, Italy;Fall;2013;e010

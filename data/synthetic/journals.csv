@@ -1,8 +1,8 @@
-id;name;volume;year
-13024834;Colectivers Report;69;2023
-13024835;IEEE Intelligent Systems Magazine;13;2010
-13024836;Controller Cybernetics;42;2017
-13024837;System Controller Letter;31;2019
-13024838;Scientific Computing Programming;90;2022
-13024839;Foundational Computer Mathematics;21;2016
-13024840;Theoretical Computer Science;13;2017
+publisher_id;journal_name;volume;year;publisherType_id
+13024834;Colectivers Report;69;2023;v001
+13024835;IEEE Intelligent Systems Magazine;13;2010;v002
+13024836;Controller Cybernetics;42;2017;v003
+13024837;System Controller Letter;31;2019;v004
+13024838;Scientific Computing Programming;90;2022;v005
+13024839;Foundational Computer Mathematics;21;2016;v006
+13024840;Theoretical Computer Science;13;2017;v007
