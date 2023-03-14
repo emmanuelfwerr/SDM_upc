@@ -4,12 +4,17 @@ from neo4j import GraphDatabase
 
 
 # Load secrets from .env
-load_dotenv(dotenv_path='./env/.env')
+#load_dotenv(dotenv_path='./env/.env')
 
 # instantiate neo4j credentials
-URI = os.environ['NEO4J_URI']
-AUTH = (os.environ['NEO4J_USERNAME'], os.environ['NEO4J_PASSWORD'])
-DB_NAME = os.environ['DB_NAME']
+#URI = os.environ['NEO4J_URI']
+#AUTH = (os.environ['NEO4J_USERNAME'], os.environ['NEO4J_PASSWORD'])
+#DB_NAME = os.environ['DB_NAME']
+
+# instantiate neo4j credentials
+URI = 'neo4j://localhost:7687'
+AUTH = ('neo4j', 'password')
+DB_NAME = 'neo4j'
 
 
 def main():
