@@ -43,28 +43,28 @@ def main():
 
 # A.2 - load graph nodes from CSV
 cypher_init_nodes = [
-    ''' LOAD CSV with headers FROM 'file:///papers.csv' AS row FIELDTERMINATOR ';' 
+    ''' LOAD CSV WITH HEADERS FROM 'file:///papers.csv' AS row FIELDTERMINATOR ';' 
         CREATE (:Paper {ID: row.id, Title: row.title, Abstract: row.abstract});''',
 
-    ''' LOAD CSV with headers FROM 'file:///authors.csv' AS row FIELDTERMINATOR ';' 
+    ''' LOAD CSV WITH HEADERS FROM 'file:///authors.csv' AS row FIELDTERMINATOR ';' 
         CREATE (:Person {ID: row.id, Name: row.author});''',
 
-    ''' LOAD CSV with headers FROM 'file:///keywords.csv' AS row FIELDTERMINATOR ';' 
+    ''' LOAD CSV WITH HEADERS FROM 'file:///keywords.csv' AS row FIELDTERMINATOR ';' 
     CREATE (:Keyword {ID: row.keyword_id, Keyword: row.keyword_name});''',
 
-    ''' LOAD CSV with headers FROM 'file:///topics.csv' AS row FIELDTERMINATOR ';'
+    ''' LOAD CSV WITH HEADERS FROM 'file:///topics.csv' AS row FIELDTERMINATOR ';'
         CREATE (:Topic {ID: row.topic_id, Topic: row.topic_name});''',
 
-    ''' LOAD CSV with headers FROM 'file:///conferences.csv' AS row FIELDTERMINATOR ';' 
+    ''' LOAD CSV WITH HEADERS FROM 'file:///conferences.csv' AS row FIELDTERMINATOR ';' 
         CREATE (:Conference {ID: row.publisher_id, Conference: row.conference_name});''',
 
-    ''' LOAD CSV with headers FROM 'file:///conferences.csv' AS row FIELDTERMINATOR ';' 
+    ''' LOAD CSV WITH HEADERS FROM 'file:///conferences.csv' AS row FIELDTERMINATOR ';' 
         CREATE (:Edition {ID: row.publisherType_id, Edition: row.edition, City: row.venue, Year: row.year, Season: row.season});''',
 
-    ''' LOAD CSV with headers FROM 'file:///journals.csv' AS row FIELDTERMINATOR ';' 
+    ''' LOAD CSV WITH HEADERS FROM 'file:///journals.csv' AS row FIELDTERMINATOR ';' 
         CREATE (:Journal {ID: row.publisher_id, Journal: row.journal_name});''',
 
-    ''' LOAD CSV with headers FROM 'file:///journals.csv' AS row FIELDTERMINATOR ';' 
+    ''' LOAD CSV WITH HEADERS FROM 'file:///journals.csv' AS row FIELDTERMINATOR ';' 
         CREATE (:Volume {ID: row.publisherType_id, Volume: row.volume, Year: row.year});'''
 ]
 

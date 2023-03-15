@@ -14,3 +14,4 @@ services:
       - ../data/neo4j/conf:/conf
       - ../data/neo4j/logs:/logs
       - ../data/neo4j/plugins:/plugins
+      - ../data/neo4j/import:/import
