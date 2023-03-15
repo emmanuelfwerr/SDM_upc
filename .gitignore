@@ -1,5 +1,8 @@
 # raw and processed data (too large)
-data/neo4j/*
+data/neo4j/conf/*
+data/neo4j/data/*
+data/neo4j/logs/*
+data/neo4j/plugins/*
 
 # pycharm and vscode
 .idea
