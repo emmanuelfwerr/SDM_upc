@@ -53,3 +53,5 @@ query_string = '''
 
 dtf_data = pd.DataFrame([dict(_) for _ in conn.query(query_string, db='neo4j')])
 print(dtf_data)
+
+
