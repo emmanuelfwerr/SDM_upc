@@ -9,6 +9,8 @@ services:
     restart: unless-stopped
     environment:
       - NEO4J_AUTH=${NEO4J_USERNAME}/${NEO4J_PASSWORD}
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
+      - NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
     volumes:
       - ../data/neo4j/data:/data
       - ../data/neo4j/conf:/conf

@@ -1,4 +1,4 @@
-id;author;institution_id;institution_name
+author_id;author_name;institution_id;institution_name
 9742907;Emmanuel Werr;c01;Mundimoto LLC
 9742908;Florian Reitz;u02;UPC
 9742909;Russell Turpin;c03;Samsung
