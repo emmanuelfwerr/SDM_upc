@@ -1,22 +1,4 @@
-journal_id;journal_name;volume;year;volume_id
-13024828;Colectivers Report;69;2017;v001
-13024828;Colectivers Report;70;2018;v002
-13024828;Colectivers Report;71;2019;v003
-13024828;Colectivers Report;72;2020;v004
-13024828;Colectivers Report;73;2021;v005
-13024828;Colectivers Report;74;2022;v006
-13024828;Colectivers Report;75;2023;v007
-13024835;IEEE Intelligent Systems Magazine;13;2017;v008
-13024835;IEEE Intelligent Systems Magazine;14;2018;v009
-13024835;IEEE Intelligent Systems Magazine;15;2019;v010
-13024835;IEEE Intelligent Systems Magazine;16;2020;v011
-13024835;IEEE Intelligent Systems Magazine;17;2021;v012
-13024835;IEEE Intelligent Systems Magazine;18;2022;v013
-13024835;IEEE Intelligent Systems Magazine;19;2023;v014
-13024842;Controller Cybernetics;42;2017;v015
-13024842;Controller Cybernetics;43;2018;v016
-13024842;Controller Cybernetics;44;2019;v017
-13024842;Controller Cybernetics;45;2020;v018
-13024842;Controller Cybernetics;46;2021;v019
-13024842;Controller Cybernetics;47;2022;v020
-13024842;Controller Cybernetics;48;2023;v021
+journal_id;journal_name
+13024828;Colectivers Report
+13024835;IEEE Intelligent Systems Magazine
+13024842;Controller Cybernetics

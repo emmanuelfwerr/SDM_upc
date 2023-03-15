@@ -1,22 +1,4 @@
-conference_id;conference_name;edition;venue;season;year;edition_id
-3329942;International Workshop on Quantum Physics and Logic;QPL 2017;Sevilla, Spain;Summer;2017;e001
-3329942;International Workshop on Quantum Physics and Logic;QPL 2018;Galicia, Spain;Winter;2018;e002
-3329942;International Workshop on Quantum Physics and Logic;QPL 2019;Barcelona, Spain;Summer;2019;e003
-3329942;International Workshop on Quantum Physics and Logic;QPL 2020;Madrd, Spain;Fall;2020;e004
-3329942;International Workshop on Quantum Physics and Logic;QPL 2021;Rome, Italy;Summer;2021;e005
-3329942;International Workshop on Quantum Physics and Logic;QPL 2022;Lyon, France;Spring;2022;e006
-3329942;International Workshop on Quantum Physics and Logic;QPL 2023;Amsterdam, Netherlands;Winter;2023;e007
-3329984;Workshop on Fixed Points in Computer Science;FICS 2017;Naples, Italy;Fall;2017;e008
-3329984;Workshop on Fixed Points in Computer Science;FICS 2018;Venice, Italy;Fall;2018;e009
-3329984;Workshop on Fixed Points in Computer Science;FICS 2019;Turino, Italy;Fall;2019;e010
-3329984;Workshop on Fixed Points in Computer Science;FICS 2020;Paris, France;Summer;2020;e011
-3329984;Workshop on Fixed Points in Computer Science;FICS 2021;Milan, Italy;Fall;2021;e012
-3329984;Workshop on Fixed Points in Computer Science;FICS 2022;Barcelona, Spain;Fall;2022;e013
-3329984;Workshop on Fixed Points in Computer Science;FICS 2023;Rome, Italy;Spring;2023;e014
-3329748;International Symposium on Games;GandALF 2017;California, USA;Fall;2017;e015
-3329748;International Symposium on Games;GandALF 2018;New York, USA;Winter;2018;e016
-3329748;International Symposium on Games;GandALF 2019;New York, USA;Spring;2019;e017
-3329748;International Symposium on Games;GandALF 2020;Roma, Italy;Summer;2020;e018
-3329748;International Symposium on Games;GandALF 2021;Turin, Italy;Summer;2021;e019
-3329748;International Symposium on Games;GandALF 2022;Turin, Italy;Winter;2022;e020
-3329748;International Symposium on Games;GandALF 2023;Barcelona, Spain;Spring;2023;e021
+conference_id;conference_name
+3329942;International Workshop on Quantum Physics and Logic
+3329984;Workshop on Fixed Points in Computer Science
+3329748;International Symposium on Games
