@@ -1,23 +1,13 @@
-import os
 import pandas as pd
-from dotenv import load_dotenv
 from neo4j import GraphDatabase
 
-
-# Load secrets from .env
-#load_dotenv(dotenv_path='./env/.env')
-
-# instantiate neo4j credentials
-#URI = os.environ['NEO4J_URI']
-#AUTH = (os.environ['NEO4J_USERNAME'], os.environ['NEO4J_PASSWORD'])
-#DB_NAME = os.environ['DB_NAME']
 
 # instantiate neo4j credentials
 URI = 'neo4j://localhost:7687'
 AUTH = ('neo4j', 'password')
 DB_NAME = 'neo4j'
 
-def cypher_query_read(query: str, driver: object, query_name: str):
+def run_cypher(query: str, driver: object, query_name: str='ad-hoc', suppress_output: bool=False):
     '''
         Opens a session using Neo4j driver and executes a read transaction. Parses the query response and 
         formats into DataFrame in order to export to output CSV.
@@ -30,38 +20,41 @@ def cypher_query_read(query: str, driver: object, query_name: str):
             Returns:
                 response (obj): query response as list
     '''
+    # prettify terminal output
+    if suppress_output == False:
+        print('\n' + 15*'-' + f' Running {query_name} Cypher ' + 15*'-' + '\n')
+
+    # neo4j transaction commit error handling
     try:
         # initialize neo4j session
         with driver.session(database=DB_NAME) as session:
             response = list(session.run(query))
             # parse query response and format into DataFrame for output
-            output = pd.DataFrame([dict(obj) for obj in response])
-            output.to_csv('./PartB_output/PartB_{}.csv'.format(query_name), index=False, sep=';')
+            if suppress_output == False:
+                output = pd.DataFrame([dict(obj) for obj in response])
+                output.to_csv('./PartB_output/PartB_{}.csv'.format(query_name), index=False, sep=';')
+                print(output)
         # print message if transaction successful and return query esponse
-        print('{} Transaction Completed Succesfully!'.format(query_name))
-        return response
+        print('\n{} Transaction Completed Succesfully!'.format(query_name))
     except Exception as e: # error handling
-        print("{} failed: ".format(query_name), e)
+        print("\n{} failed: ".format(query_name), e)
 
 
 def main():
     '''
-    Orchestrates main functionality of script. Initializes Neo4j driver and runs Cypher queries 
-    as read transactions using custom function.
+        Orchestrates main functionality of script. Initializes Neo4j driver and runs Cypher queries 
+        as read/write transactions using custom function.
     '''
     # initialize neo4j driver
     with GraphDatabase.driver(URI, auth=AUTH) as driver:
         # run Query_1 read transaction
-        cypher_query_read(query_1, driver, query_name='Query1')
-
+        run_cypher(query_1, driver, query_name='Query1')
         # run Query_2 read transaction
-        cypher_query_read(query_2, driver, query_name='Query2')
-
+        run_cypher(query_2, driver, query_name='Query2')
         # run Query_3 read transaction
-        cypher_query_read(query_3, driver, query_name='Query3')
-
+        run_cypher(query_3, driver, query_name='Query3')
         # run Query_4 read transaction
-        cypher_query_read(query_4, driver, query_name='Query4')
+        run_cypher(query_4, driver, query_name='Query4')
 
 
 # B.1 - Find the top 3 most cited papers of each conference
@@ -76,7 +69,8 @@ query_1 = '''
     Papers[2][0] as Paper3, Papers[2][1] as Total_Citations_Paper3;
 '''
 
-# B.2 - For each conference find its community: i.e., those authors that have published papers on that conference in, at least, 4 different editions.
+# B.2 - For each conference find its community: i.e., those authors that have published papers on that 
+# conference in, at least, 4 different editions.
 query_2 = ''' 
     MATCH (author:Person)<-[:WritenBy]-(p1:Paper)-[:PublishedOn]->(e1:Edition)-[:PartOf]->(c:Conference)
     WITH c.Conference as conference, author.Name as author, count(distinct e1.Edition) as publications
@@ -112,14 +106,17 @@ query_3 = '''
 
 # B.4 - Find the h-indexes of the authors in your graph
 query_4 = '''
-    MATCH (pe:Person)<-[:WritenBy]-(p1:Paper)-[:CitedBy]->(p2:Paper)
-    WITH pe.Name as author_name, p1.Title as Title, count(*) as NumCites 
+    MATCH (p:Person)<-[:WritenBy]-(p1:Paper)-[:CitedBy]->(p2:Paper)
+    WITH p.Name as author_name, p1.Title as Title, count(*) as NumCites 
     ORDER BY NumCites desc
     WITH author_name, collect(NumCites) as list_NumCites
-    WITH author_name, [ x IN range(1,size(list_NumCites)) where x <= list_NumCites[x-1] | [list_NumCites[x-1],x] ] as list_hindex
+    WITH author_name, [ i IN range(1,size(list_NumCites)) where i <= list_NumCites[i-1] | [list_NumCites[i-1], i] ] as list_hindex
     RETURN author_name, list_hindex[-1][1] as h_index
     ORDER BY h_index desc;
 '''
+
+# ----------------------------------------------
+# ----------------------------------------------
 
 
 if __name__=="__main__":

@@ -1,22 +1,12 @@
-import os
-from dotenv import load_dotenv
 from neo4j import GraphDatabase
 
-
-# Load secrets from .env
-#load_dotenv(dotenv_path='./env/.env')
-
-# instantiate neo4j credentials
-#URI = os.environ['NEO4J_URI']
-#AUTH = (os.environ['NEO4J_USERNAME'], os.environ['NEO4J_PASSWORD'])
-#DB_NAME = os.environ['DB_NAME']
 
 # instantiate neo4j credentials
 URI = 'neo4j://localhost:7687'
 AUTH = ('neo4j', 'password')
 DB_NAME = 'neo4j'
 
-def cypher_query_write(query: str, driver: object):
+def run_cypher(query: str, driver: object):
     '''
         Opens a session using Neo4j driver and executes a write transaction.
 
@@ -27,6 +17,7 @@ def cypher_query_write(query: str, driver: object):
             Returns:
                 response (obj): query response as list
     '''
+    # neo4j transaction commit error handling
     try:
         # initialize neo4j session
         with driver.session(database=DB_NAME) as session:
@@ -40,21 +31,22 @@ def cypher_query_write(query: str, driver: object):
 
 def main():
     '''
-    Orchestrates main functionality of script. Initializes Neo4j driver and runs Cypher queries 
-    as read transactions using custom function.
+        Orchestrates main functionality of script. Initializes Neo4j driver and runs Cypher queries 
+        as read/write transactions using custom function.
     '''
     # initialize neo4j driver
     with GraphDatabase.driver(URI, auth=AUTH) as driver:
         # run query transactions to create all nodes
         for query in cypher_init_nodes:
-            cypher_query_write(query, driver)
+            run_cypher(query, driver)
 
         # run query transactions to create all relationships
         for query in cypher_init_relations:
-            cypher_query_write(query, driver)
+            run_cypher(query, driver)
 
 
-# A.2 - load graph nodes from CSV
+# --*-- A.2 - load graph nodes from CSV --*--
+# -------------------------------------------
 cypher_init_nodes = [
     ''' LOAD CSV WITH HEADERS FROM 'file:///papers.csv' AS row FIELDTERMINATOR ';' 
         CREATE (:Paper {ID: row.paper_id, Title: row.title, Abstract: row.abstract});''',
@@ -81,7 +73,8 @@ cypher_init_nodes = [
         CREATE (:Volume {ID: row.volume_id, Volume: row.volume, Year: row.year});'''
 ]
 
-# A.2 - load graph edges from CSV
+# --*-- A.2 - load graph edges from CSV --*--
+# -------------------------------------------
 cypher_init_relations = [
     ''' LOAD CSV WITH HEADERS FROM "file:///paper_TO_author.csv" AS row FIELDTERMINATOR ';' 
         MERGE (paper:Paper {ID: row.paper_id})
@@ -133,6 +126,9 @@ cypher_init_relations = [
         MERGE (topic:Topic {ID: row.topic_id})
         MERGE (keyword)-[:CorrespondTo]->(topic);'''
 ]
+
+# ----------------------------------------------
+# ----------------------------------------------
 
 
 if __name__=="__main__":
