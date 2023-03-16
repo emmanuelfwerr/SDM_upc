@@ -50,10 +50,7 @@ cypher_extend_nodes = [
         CREATE (:Company {ID: row.company_id, Name: row.company_name});''',
 
     ''' LOAD CSV with headers FROM 'file:///universities.csv' AS row FIELDTERMINATOR ';' 
-        CREATE (:University {ID: row.university_id, Name: row.university_name});''',
-
-    ''' NOT DONE *** LOAD CSV with headers FROM 'file:///paper_TO_reviewer.csv' AS row FIELDTERMINATOR ';' 
-        CREATE (:Review {ID: row.review_id, Decision: row.decision, Review: row.text});'''
+        CREATE (:University {ID: row.university_id, Name: row.university_name});'''
 ]
 
 # A.3 - extend graph edges from CSV
@@ -68,10 +65,9 @@ cypher_extend_relations = [
         MERGE (university:University {ID: row.university_id})
         MERGE (person)-[:Affiliation]->(university);''',
 
-    ''' NOT DONE *** LOAD CSV WITH HEADERS FROM "file:///paper_TO_reviewer.csv" AS row FIELDTERMINATOR ';' 
-        MERGE (review:Review {ID: row.review_id})
-        MERGE (person:Person {ID: row.author_id})
-        MERGE (review)-[:ReviewWritenBy]->(person);'''
+    ''' LOAD CSV WITH HEADERS FROM "file:///paper_TO_reviewer.csv" AS row FIELDTERMINATOR ';' 
+        MATCH (Paper {ID: row.paper_id})-[review:ReviewedBy]->(Person {ID: row.reviewer_id})
+        SET review.text = row.text, review.decision = row.decision;'''
 ]
 
 
