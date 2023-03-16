@@ -68,27 +68,28 @@ print(query2)
 query2.to_csv('PartB_query2.csv', index=False, sep=';')
 
 # 3. Find the impact factors of the journals in your graph
+
 query_3_string = '''
 MATCH (j:Journal)
 CALL{
     with j
-    MATCH (p2:Paper)-[:CitedBy]->(p1:Paper)-[:PublishedOn]->(v:Volume{Year: '2002'})-[:PartOf]->(j)
+    MATCH (p2:Paper)-[:CitedBy]->(p1:Paper)-[:PublishedOn]->(v:Volume{Year: '2022'})-[:PartOf]->(j)
     WHERE EXISTS {
     MATCH(j)<-[:PartOf]-(v1:Volume)<-[:PublishedOn]-(p2)
-    WHERE v1.Year IN ["2001","2000"]}
+    WHERE v1.Year IN ["2021","2020"]}
     REturn j.Journal as Journal_title, p2.ID as paper2_id
 }
 CALL{
     with j
     MATCH(j)<-[:PartOf]-(v:Volume)<-[:PublishedOn]-(p1:Paper)
-    WHERE v.Year IN ["2001","2000"]
+    WHERE v.Year IN ["2021","2020"]
     WITH j.Journal as journal_title, p1.Title as paper, count(*) as num_publications
     WITH sum(num_publications) AS total_num_publications
     where total_num_publications >0
     return total_num_publications
 }
-with Journal_title,count(paper2_id)as cites_2000_2001, total_num_publications as num_publications_2002
-return Journal_title,cites_2000_2001,num_publications_2002,round(1.0*cites_2000_2001/num_publications_2002,2) as Impact_Factor;
+with Journal_title,count(paper2_id)as cites_2020_2021, total_num_publications as num_publications_2022
+return Journal_title,cites_2020_2021,num_publications_2022,round(1.0*cites_2020_2021/num_publications_2022,2) as Impact_Factor;
 '''
 
 query3 = pd.DataFrame([dict(_) for _ in conn.query(query_3_string, db='neo4j')])
