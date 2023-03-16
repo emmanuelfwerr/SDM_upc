@@ -46,7 +46,7 @@ conn.query(query_string, db='neo4j')
 
 query_string = '''
     CALL gds.pageRank.stream('pagerank_example',
-    {maxIterations: 15, dampingFactor: 0.70}) YIELD nodeId, score
+    {maxIterations: 15, dampingFactor: 0.90}) YIELD nodeId, score
     RETURN gds.util.asNode(nodeId).Title AS name, round(score,2) as score
     ORDER BY score DESC LIMIT 10;
     '''
