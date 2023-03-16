@@ -16,22 +16,32 @@ URI = 'neo4j://localhost:7687'
 AUTH = ('neo4j', 'password')
 DB_NAME = 'neo4j'
 
-def cypher_query_write(query, driver):
+def cypher_query_write(query: str, driver: object):
     '''
+        Opens a session using Neo4j driver and executes a write transaction.
 
+            Parameters:
+                query (str): Cypher query formatted as string
+                driver (obj): Neo4j Driver object
+
+            Returns:
+                response (obj): query response as list
     '''
     try:
+        # initialize neo4j session
         with driver.session(database=DB_NAME) as session:
             response = list(session.run(query))
+        # print message if transaction successful and return query esponse
         print('Transaction Completed Succesfully!')
         return response
-    except Exception as e:
+    except Exception as e: # error handling
         print("Query failed: ", e)
 
 
 def main():
     '''
-    
+    Orchestrates main functionality of script. Initializes Neo4j driver and runs Cypher queries 
+    as read transactions using custom function.
     '''
     # initialize neo4j driver
     with GraphDatabase.driver(URI, auth=AUTH) as driver:
