@@ -60,57 +60,57 @@ def main():
 # B.1 - Find the top 3 most cited papers of each conference
 query_1 = '''
     MATCH (p2:Paper)<-[:CitedBy]-(p1:Paper)-[:PublishedOn]->(e1:Edition)-[:PartOf]->(c:Conference)
-    WITH c.Conference as conference, p1.Title as paper, count(*) as citations
-    ORDER BY conference, citations DESC
-    WITH conference, collect([paper, citations]) as Papers
-    RETURN conference as conference_name,
-    Papers[0][0] as Paper1, Papers[0][1] as Total_Citations_Paper1,
-    Papers[1][0] as Paper2, Papers[1][1] as Total_Citations_Paper2,
-    Papers[2][0] as Paper3, Papers[2][1] as Total_Citations_Paper3;
+    WITH c.ID as conference_id, c.Conference as conference_name, p1.Title as paper, count(*) as citations
+    ORDER BY conference_id, citations DESC
+    WITH conference_id, conference_name, collect([paper, citations]) as result
+    RETURN conference_id, conference_name,
+    result[0][0] as Paper1, result[0][1] as Total_Citations_Paper1,
+    result[1][0] as Paper2, result[1][1] as Total_Citations_Paper2,
+    result[2][0] as Paper3, result[2][1] as Total_Citations_Paper3;
 '''
 
 # B.2 - For each conference find its community: i.e., those authors that have published papers on that 
 # conference in, at least, 4 different editions.
 query_2 = ''' 
-    MATCH (author:Person)<-[:WritenBy]-(p1:Paper)-[:PublishedOn]->(e1:Edition)-[:PartOf]->(c:Conference)
-    WITH c.Conference as conference, author.Name as author, count(distinct e1.Edition) as publications
-    ORDER BY conference, publications DESC
-    WHERE publications > 0
-    WITH conference, collect([author]) as community_authors
-    RETURN conference as conference_name, community_authors;
+    MATCH (p:Person)<-[:WritenBy]-(p1:Paper)-[:PublishedOn]->(e1:Edition)-[:PartOf]->(c:Conference)
+    WITH c.ID as conference_id, c.Conference as conference_name, p.Name as author, count(DISTINCT e1.Edition) as publications
+    ORDER BY conference_id, publications DESC
+    WHERE publications > 3
+    WITH conference_id, conference_name, collect(author) as community_authors
+    RETURN conference_id, conference_name, community_authors;
 '''
     
 # B.3 - Find the impact factors of the journals in your graph
 query_3 = '''
     MATCH (j:Journal)
     CALL{
-        with j
+        WITH j
         MATCH (p2:Paper)-[:CitedBy]->(p1:Paper)-[:PublishedOn]->(v:Volume{Year: '2022'})-[:PartOf]->(j)
         WHERE EXISTS {
         MATCH(j)<-[:PartOf]-(v1:Volume)<-[:PublishedOn]-(p2)
         WHERE v1.Year IN ["2021","2020"]}
-        REturn j.Journal as journal_name, p2.ID as paper2_id
+        RETURN j.Journal as journal_name, p2.ID as paper2_id
     }
     CALL{
-        with j
+        WITH j
         MATCH(j)<-[:PartOf]-(v:Volume)<-[:PublishedOn]-(p1:Paper)
         WHERE v.Year IN ["2021","2020"]
-        WITH j.Journal as journal_name, p1.Title as paper, count(*) as num_publications
-        WITH sum(num_publications) AS total_num_publications
-        where total_num_publications > 0
-        return total_num_publications
+        WITH j.Journal as journal_name, p1.Title as paper, count(*) as publications
+        WITH sum(publications) AS total_publications
+        WHERE total_publications > 0
+        RETURN total_publications
     }
-    with journal_name, count(paper2_id) as citations_2020_2021, total_num_publications as total_publications_2022
-    return journal_name, citations_2020_2021, total_publications_2022, round( (1.0*citations_2020_2021) / (total_publications_2022), 2) as impact_factor;
+    WITH journal_name, count(paper2_id) as citations_2020_2021, total_publications as total_publications_2022
+    RETURN journal_name, citations_2020_2021, total_publications_2022, round( (1.0*citations_2020_2021) / (total_publications_2022), 2) as impact_factor;
 '''
 
 # B.4 - Find the h-indexes of the authors in your graph
 query_4 = '''
     MATCH (p:Person)<-[:WritenBy]-(p1:Paper)-[:CitedBy]->(p2:Paper)
-    WITH p.Name as author_name, p1.Title as Title, count(*) as NumCites 
-    ORDER BY NumCites desc
-    WITH author_name, collect(NumCites) as list_NumCites
-    WITH author_name, [ i IN range(1,size(list_NumCites)) where i <= list_NumCites[i-1] | [list_NumCites[i-1], i] ] as list_hindex
+    WITH p.Name as author_name, p1.Title as Title, count(*) as total_citations 
+    ORDER BY total_citations desc
+    WITH author_name, collect(total_citations) as list_total_citations
+    WITH author_name, [ i IN range(1,size(list_total_citations)) where i <= list_total_citations[i-1] | [list_total_citations[i-1], i] ] as list_hindex
     RETURN author_name, list_hindex[-1][1] as h_index
     ORDER BY h_index desc;
 '''

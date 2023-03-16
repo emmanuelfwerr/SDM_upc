@@ -34,7 +34,7 @@ def run_cypher(query: str, driver: object, query_name: str='ad-hoc', suppress_ou
             # print response to terminal 
             if suppress_output == False:
                 print(output)
-        # print message if transaction successful and return query esponse
+        # print message if transaction successful and return query response
         print(f'\n{query_name} Transaction Completed Succesfully!')
         return response
     except Exception as e: # error handling
@@ -44,7 +44,7 @@ def run_cypher(query: str, driver: object, query_name: str='ad-hoc', suppress_ou
 def main():
     '''
         Orchestrates main functionality of script. Initializes Neo4j driver and runs Cypher queries 
-        as read transactions using custom function.
+        as read/write transactions using custom function.
     '''
     with GraphDatabase.driver(URI, auth=AUTH) as driver:
         # --*-- D.1 - Page Rank --*--

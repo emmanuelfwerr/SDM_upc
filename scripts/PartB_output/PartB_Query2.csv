@@ -1,4 +1,4 @@
-conference_name;community_authors
-International Symposium on Games;[['Stefano Cresci'], ['Antonio Filieri'], ['Russell Turpin'], ['Frank Olken'], ['Emmanuel Werr'], ['Valentina Bartalesi'], ['Veronica Penza'], ['Alessia Amelio'], ['Cristiano Rocco'], ['Fabio Carrara'], ['Florian Reitz'], ['Federico Nardi'], ['Sebastian Paglia']]
-International Workshop on Quantum Physics and Logic;[['Valentina Bartalesi'], ['Russell Turpin'], ['Stefano Cresci'], ['Federico Nardi'], ['Veronica Penza'], ['Antonio Filieri'], ['Frank Olken'], ['Felice DellOrletta'], ['Alessia Amelio'], ['Francesca Righetti'], ['Guido Frisch'], ['Roberto Mura'], ['Filippo Bonchi'], ['Marco Bessi'], ['Davide Tamborini'], ['Florian Reitz'], ['Cristiano Rocco'], ['Emmanuel Werr'], ['Francesca Lunardini'], ['Sebastian Paglia'], ['Said Daoudagh']]
-Workshop on Fixed Points in Computer Science;[['Veronica Penza'], ['Stefano Cresci'], ['Guido Frisch'], ['Antonio Filieri'], ['Said Daoudagh'], ['Piero Borga'], ['Valentina Bartalesi'], ['Felice DellOrletta'], ['Alessia Amelio'], ['Sebastian Paglia'], ['Davide Tamborini'], ['Fabio Carrara'], ['Florian Reitz'], ['Roberto Mura'], ['Francesca Righetti'], ['Federico Nardi'], ['Russell Turpin'], ['Cristiano Rocco']]
+conference_id;conference_name;community_authors
+3329748;International Symposium on Games;['Stefano Cresci']
+3329942;International Workshop on Quantum Physics and Logic;['Valentina Bartalesi']
+3329984;Workshop on Fixed Points in Computer Science;['Veronica Penza']
