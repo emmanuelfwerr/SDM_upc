@@ -1,112 +1,126 @@
+import os
 import pandas as pd
+from dotenv import load_dotenv
 from neo4j import GraphDatabase
 
 
-class Neo4jConnection:
+# Load secrets from .env
+#load_dotenv(dotenv_path='./env/.env')
 
-    def __init__(self, uri, user, pwd):
-        self.__uri = uri
-        self.__user = user
-        self.__pwd = pwd
-        self.__driver = None
-        try:
-            self.__driver = GraphDatabase.driver(self.__uri, auth=(self.__user, self.__pwd))
-        except Exception as e:
-            print("Failed to create the driver:", e)
+# instantiate neo4j credentials
+#URI = os.environ['NEO4J_URI']
+#AUTH = (os.environ['NEO4J_USERNAME'], os.environ['NEO4J_PASSWORD'])
+#DB_NAME = os.environ['DB_NAME']
 
-    def close(self):
-        if self.__driver is not None:
-            self.__driver.close()
+# instantiate neo4j credentials
+URI = 'neo4j://localhost:7687'
+AUTH = ('neo4j', 'password')
+DB_NAME = 'neo4j'
 
-    def query(self, query, db=None):
-        assert self.__driver is not None, "Driver not initialized!"
-        session = None
-        response = None
-        try:
-            session = self.__driver.session(database=db) if db is not None else self.__driver.session()
+def cypher_query_read(query: str, driver: object, query_name: str):
+    '''
+        Opens a session using Neo4j driver and executes a read transaction. Parses the query response and 
+        formats into DataFrame in order to export to output CSV.
+
+            Parameters:
+                query (str): Cypher query formatted as string
+                driver (obj): Neo4j Driver object
+                query_name (str): desired name of query used for prints and output file names
+
+            Returns:
+                response (obj): query response as list
+    '''
+    try:
+        # initialize neo4j session
+        with driver.session(database=DB_NAME) as session:
             response = list(session.run(query))
-        except Exception as e:
-            print("Query failed:", e)
-        finally:
-            if session is not None:
-                session.close()
+            # parse query response and format into DataFrame for output
+            output = pd.DataFrame([dict(obj) for obj in response])
+            output.to_csv('./PartB_output/PartB_{}.csv'.format(query_name), index=False, sep=';')
+        # print message if transaction successful and return query esponse
+        print('{} Transaction Completed Succesfully!'.format(query_name))
         return response
+    except Exception as e: # error handling
+        print("{} failed: ".format(query_name), e)
 
 
-conn = Neo4jConnection(uri="neo4j://localhost:7687", user="neo4j", pwd="password")
+def main():
+    '''
+    Orchestrates main functionality of script. Initializes Neo4j driver and runs Cypher queries 
+    as read transactions using custom function.
+    '''
+    # initialize neo4j driver
+    with GraphDatabase.driver(URI, auth=AUTH) as driver:
+        # run Query_1 read transaction
+        cypher_query_read(query_1, driver, query_name='Query1')
+
+        # run Query_2 read transaction
+        cypher_query_read(query_2, driver, query_name='Query2')
+
+        # run Query_3 read transaction
+        cypher_query_read(query_3, driver, query_name='Query3')
+
+        # run Query_4 read transaction
+        cypher_query_read(query_4, driver, query_name='Query4')
 
 
-# 1. Find the top 3 most cited papers of each conference
-query_1_string = '''
+# B.1 - Find the top 3 most cited papers of each conference
+query_1 = '''
     MATCH (p2:Paper)<-[:CitedBy]-(p1:Paper)-[:PublishedOn]->(e1:Edition)-[:PartOf]->(c:Conference)
-    WITH c.Conference as conference, p1.Title as paper, count(*) as cites
-    ORDER BY conference,cites DESC
-    WITH conference, collect([paper,cites]) as Papers
+    WITH c.Conference as conference, p1.Title as paper, count(*) as citations
+    ORDER BY conference, citations DESC
+    WITH conference, collect([paper, citations]) as Papers
     RETURN conference as conference_name,
-    Papers[0][0] as Cited_Paper1, Papers[0][1] as Num_cites1,
-    Papers[1][0] as Cited_Paper2, Papers[1][1] as Num_cites2,
-    Papers[2][0] as Cited_Paper3, Papers[2][1] as Num_cites3;
+    Papers[0][0] as Paper1, Papers[0][1] as Total_Citations_Paper1,
+    Papers[1][0] as Paper2, Papers[1][1] as Total_Citations_Paper2,
+    Papers[2][0] as Paper3, Papers[2][1] as Total_Citations_Paper3;
 '''
 
-query1 = pd.DataFrame([dict(_) for _ in conn.query(query_1_string, db='neo4j')])
-print(query1)
-query1.to_csv('PartB_query1.csv', index=False, sep=';')
-
-
-# 2. For each conference find its community: i.e., those authors that have published papers on that conference in, at least, 4 different editions.
-query_2_string = ''' 
+# B.2 - For each conference find its community: i.e., those authors that have published papers on that conference in, at least, 4 different editions.
+query_2 = ''' 
     MATCH (author:Person)<-[:WritenBy]-(p1:Paper)-[:PublishedOn]->(e1:Edition)-[:PartOf]->(c:Conference)
     WITH c.Conference as conference, author.Name as author, count(distinct e1.Edition) as publications
-    ORDER BY conference,publications DESC
-    WHERE publications>0
-    WITH conference, collect([author]) as Comunity
-    RETURN conference as Conference_name, Comunity;
+    ORDER BY conference, publications DESC
+    WHERE publications > 0
+    WITH conference, collect([author]) as community_authors
+    RETURN conference as conference_name, community_authors;
+'''
+    
+# B.3 - Find the impact factors of the journals in your graph
+query_3 = '''
+    MATCH (j:Journal)
+    CALL{
+        with j
+        MATCH (p2:Paper)-[:CitedBy]->(p1:Paper)-[:PublishedOn]->(v:Volume{Year: '2022'})-[:PartOf]->(j)
+        WHERE EXISTS {
+        MATCH(j)<-[:PartOf]-(v1:Volume)<-[:PublishedOn]-(p2)
+        WHERE v1.Year IN ["2021","2020"]}
+        REturn j.Journal as journal_name, p2.ID as paper2_id
+    }
+    CALL{
+        with j
+        MATCH(j)<-[:PartOf]-(v:Volume)<-[:PublishedOn]-(p1:Paper)
+        WHERE v.Year IN ["2021","2020"]
+        WITH j.Journal as journal_name, p1.Title as paper, count(*) as num_publications
+        WITH sum(num_publications) AS total_num_publications
+        where total_num_publications > 0
+        return total_num_publications
+    }
+    with journal_name, count(paper2_id) as citations_2020_2021, total_num_publications as total_publications_2022
+    return journal_name, citations_2020_2021, total_publications_2022, round( (1.0*citations_2020_2021) / (total_publications_2022), 2) as impact_factor;
 '''
 
-query2 = pd.DataFrame([dict(_) for _ in conn.query(query_2_string, db='neo4j')])
-print(query2)
-query2.to_csv('PartB_query2.csv', index=False, sep=';')
-
-# 3. Find the impact factors of the journals in your graph
-
-query_3_string = '''
-MATCH (j:Journal)
-CALL{
-    with j
-    MATCH (p2:Paper)-[:CitedBy]->(p1:Paper)-[:PublishedOn]->(v:Volume{Year: '2022'})-[:PartOf]->(j)
-    WHERE EXISTS {
-    MATCH(j)<-[:PartOf]-(v1:Volume)<-[:PublishedOn]-(p2)
-    WHERE v1.Year IN ["2021","2020"]}
-    REturn j.Journal as Journal_title, p2.ID as paper2_id
-}
-CALL{
-    with j
-    MATCH(j)<-[:PartOf]-(v:Volume)<-[:PublishedOn]-(p1:Paper)
-    WHERE v.Year IN ["2021","2020"]
-    WITH j.Journal as journal_title, p1.Title as paper, count(*) as num_publications
-    WITH sum(num_publications) AS total_num_publications
-    where total_num_publications >0
-    return total_num_publications
-}
-with Journal_title,count(paper2_id)as cites_2020_2021, total_num_publications as num_publications_2022
-return Journal_title,cites_2020_2021,num_publications_2022,round(1.0*cites_2020_2021/num_publications_2022,2) as Impact_Factor;
+# B.4 - Find the h-indexes of the authors in your graph
+query_4 = '''
+    MATCH (pe:Person)<-[:WritenBy]-(p1:Paper)-[:CitedBy]->(p2:Paper)
+    WITH pe.Name as author_name, p1.Title as Title, count(*) as NumCites 
+    ORDER BY NumCites desc
+    WITH author_name, collect(NumCites) as list_NumCites
+    WITH author_name, [ x IN range(1,size(list_NumCites)) where x <= list_NumCites[x-1] | [list_NumCites[x-1],x] ] as list_hindex
+    RETURN author_name, list_hindex[-1][1] as h_index
+    ORDER BY h_index desc;
 '''
 
-query3 = pd.DataFrame([dict(_) for _ in conn.query(query_3_string, db='neo4j')])
-print(query3)
-query3.to_csv('PartB_query3.csv', index=False, sep=';')
 
-
-# 4. Find the h-indexes of the authors in your graph
-query_4_string = '''MATCH (pe:Person)<-[:WritenBy]-(p1:Paper)-[:CitedBy]->(p2:Paper)
-WITH pe.Name as Author, p1.Title as Title, count(*) as NumCites 
-ORDER BY NumCites desc
-WITH Author, collect(NumCites) as list_NumCites
-WITH Author, [x IN range(1,size(list_NumCites)) where x<=list_NumCites[x-1]| [list_NumCites[x-1],x] ] as list_hindex
-RETURN Author,list_hindex[-1][1] as h_index
-ORDER BY h_index desc;
-'''
-
-query4 = pd.DataFrame([dict(_) for _ in conn.query(query_4_string, db='neo4j')])
-print(query4)
-query4.to_csv('PartB_query4.csv', index=False, sep=';')
+if __name__=="__main__":
+    main()
