@@ -1,0 +1,715 @@
+paper_id;keyword_name;keyword_id
+1;sleep;4690
+44;sleep;4690
+1;deprivation;4691
+1;cognitive function;4692
+146;cognitive function;4692
+1;attention;4693
+146;attention;4693
+1;working;4694
+1;memory;4695
+146;memory;4695
+1;decision making;4696
+1;performance;4697
+2;exercise;4698
+18;exercise;4698
+21;exercise;4698
+31;exercise;4698
+2;chronic pain;4699
+26;chronic pain;4699
+2;pain;46910
+2;perception;46911
+2;physical function;46912
+2;arthritis;46913
+2;fibromyalgia;46914
+3;social media;46915
+20;social media;46915
+68;social media;46915
+84;social media;46915
+129;social media;46915
+150;social media;46915
+3;adolescent;46916
+3;mental health;46917
+18;mental health;46917
+50;mental health;46917
+66;mental health;46917
+68;mental health;46917
+150;mental health;46917
+3;anxiety;46918
+9;anxiety;46918
+18;anxiety;46918
+23;anxiety;46918
+150;anxiety;46918
+3;depression;46919
+29;depression;46919
+32;depression;46919
+42;depression;46919
+150;depression;46919
+3;excessive use;46920
+4;machine learning algorithm;46921
+4;heart disease;46922
+4;prediction;46923
+4;patient characteristics;46924
+4;medical history;46925
+5;greenhouse;46926
+5;gas emissions;46927
+5;urban transportation;46928
+5;cars;46929
+5;buses;46930
+5;trains;46931
+5;alternative modes policies;46932
+6;climate change;46933
+48;climate change;46933
+65;climate change;46933
+153;climate change;46933
+6;coral reefs;46934
+55;coral reefs;46934
+6;warming;46935
+6;waters;46936
+6;ocean acidification;46937
+55;ocean acidification;46937
+6;biodiversity;46938
+48;biodiversity;46938
+7;microbes;46939
+7;soil;46940
+7;health nutrient cycling;46941
+7;structure;46942
+7;plant growth;46943
+8;water filtration;46944
+8;rural communities;46945
+8;low-cost;46946
+8;locally available materials;46947
+8;simple technology;46948
+9;meditation;46949
+9;stress;46950
+18;stress;46950
+37;stress;46950
+9;symptoms;46951
+9;wellbeing;46952
+10;social support;46953
+50;social support;46953
+10;substance use;46954
+10;disorders recovery;46955
+10;family support;46956
+10;community support;46957
+11;sustainable packaging;46958
+11;food delivery;46959
+11;services;46960
+11;environmental impact;46961
+53;environmental impact;46961
+11;usability materials;46962
+12;genetics;46963
+12;autism;46964
+12;spectrum disorders;46965
+12;genetic markers;46966
+12;diagnosis treatment;46967
+13;pain management;46968
+54;pain management;46968
+13;medication;46969
+13;physical therapy;46970
+13;psychological interventions;46971
+13;pain conditions;46972
+54;pain conditions;46972
+14;air pollution;46973
+60;air pollution;46973
+14;human health;46974
+14;particulate matter;46975
+14;ozone;46976
+14;respiratory system;46977
+14;cardiovascular system;46978
+14;economic costs;46979
+15;renewable energy;46980
+149;renewable energy;46980
+15;rural electrification;46981
+15;solar power;46982
+149;solar power;46982
+15;wind power;46983
+149;wind power;46983
+15;hydroelectric power;46984
+15;developing countries;46985
+15;technical feasibility;46986
+15;economic feasibility;46987
+16;artificial intelligence;46988
+56;artificial intelligence;46988
+152;artificial intelligence;46988
+154;artificial intelligence;46988
+16;healthcare diagnosis;46989
+16;treatment outcomes;46990
+16;ethical considerations;46991
+17;sleep deprivation;46992
+146;sleep deprivation;46992
+17;cognitive performance;46993
+63;cognitive performance;46993
+17;attention memory;46994
+17;decision-making;46995
+146;decision-making;46995
+17;long-term consequences;46996
+18;physical activity;46997
+63;physical activity;46997
+18;mood;46998
+18;treatment;46999
+19;mobile app;469100
+19;remote patient monitoring;469101
+19;features functionalities;469102
+19;patient outcomes;469103
+19;healthcare costs;469104
+20;body image;469105
+68;body image;469105
+20;eating behaviors;469106
+20;exposure;469107
+20;idealized images;469108
+20;self-esteem;469109
+68;self-esteem;469109
+20;positive body image;469110
+22;microbiota;469111
+24;sleep apnea;469112
+25;alzheimer's disease;469113
+43;alzheimer's disease;469113
+67;alzheimer's disease;469113
+27;nutrition;469114
+40;nutrition;469114
+28;osteoarthritis;469115
+30;telemedicine;469116
+35;telemedicine;469116
+33;yoga;469117
+34;vitamin d;469118
+36;copd;469119
+38;mindfulness;469120
+39;genetic testing;469121
+41;virtual reality;469122
+45;augmented reality;469123
+46;gut microbiota;469124
+147;gut microbiota;469124
+46;autoimmune diseases;469125
+46;microbial dysbiosis disease;469126
+46;pathogenesis;469127
+46;microbiome-targeted therapies;469128
+47;online education;469129
+47;academic achievement;469130
+69;academic achievement;469130
+47;student engagement;469131
+47;teacher workload;469132
+47;educational inequality;469133
+48;rising temperatures;469134
+48;precipitation patterns;469135
+48;habitat loss;469136
+48;plant and animal populations;469137
+48;conservation strategies;469138
+49;predictive model;469139
+49;credit risk assessment;469140
+49;model training;469141
+49;loan approval;469142
+49;accuracy default rates;469143
+50;health outcomes;469144
+50;older adults;469145
+50;social isolation;469146
+150;social isolation;469146
+50;loneliness;469147
+50;physical health;469148
+66;physical health;469148
+50;quality of life;469149
+57;quality of life;469149
+51;blockchain;469150
+103;blockchain;469150
+51;supply chain;469151
+51;management transparency;469152
+51;security efficiency implementation;469153
+52;culture;469154
+52;cross-cultural communication;469155
+52;international business;469156
+52;cultural dimensions;469157
+52;communication styles;469158
+52;communication strategies;469159
+52;cultural intelligence training;469160
+53;genome editing;469161
+151;genome editing;469161
+53;agricultural biotechnology;469162
+53;disease-resistant;469163
+53;crops;469164
+53;nutritional value;469165
+54;music therapy;469166
+54;physiological mechanisms;469167
+54;adjunctive therapy;469168
+55;ph levels;469169
+55;coral calcification;469170
+55;coral growth;469171
+55;coral survival;469172
+55;adaptation management strategies;469173
+56;cybersecurity;469174
+81;cybersecurity;469174
+56;machine learning algorithms;469175
+70;machine learning algorithms;469175
+56;threat detection;469176
+56;threat response;469177
+56;implementation challenges;469178
+56;security systems;469179
+57;cognitive behavioral;469180
+57;therapy anxiety disorders;469181
+57;mechanisms of action;469182
+60;mechanisms of action;469182
+66;mechanisms of action;469182
+57;symptom severity;469183
+58;sleep memory consolidation;469184
+58;different stages of sleep;469185
+58;memory processing;469186
+58;sleep interventions;469187
+58;memory impairments;469188
+59;advertising;469189
+59;consumer behavior;469190
+59;advertising strategies;469191
+59;consumer attitudes;469192
+59;consumer perceptions;469193
+59;purchase intentions;469194
+59;advertising regulation;469195
+59;vulnerable consumers;469196
+60;respiratory health;469197
+60;air quality interventions;469198
+60;respiratory diseases;469199
+61;micrornas cancer;469200
+61;progression mirna;469201
+61;dysregulation cell;469202
+61;proliferation invasion;469203
+61;metastasis;469204
+61;mirna-based therapies;469205
+61;cancer treatment;469206
+62;corporate social responsibility;469207
+62;business performance;469208
+80;business performance;469208
+62;csr activities;469209
+62;financial performance;469210
+62;employee satisfaction;469211
+62;customer loyalty;469212
+62;brand reputation;469213
+62;long-term sustainability;469214
+63;cognitive functioning;469215
+63;older adults exercise;469216
+63;brain structure;469217
+67;brain structure;469217
+63;brain function;469218
+67;brain function;469218
+63;physical activity interventions;469219
+63;aging populations;469220
+64;3d printing architecture;469221
+64;additive manufacturing;469222
+64;building construction;469223
+64;construction processes;469224
+65;global food security;469225
+65;weather patterns;469226
+65;crop yields;469227
+65;food availability;469228
+65;adaptation strategies;469229
+65;mitigation strategies;469230
+65;vulnerable populations;469231
+66;mindfulness-based interventions;469232
+66;stress reduction;469233
+66;stress-related disorders;469234
+67;genetic variations;469235
+67;genetic risk factors;469236
+67;personalized medicine;469237
+67;prevention treatment;469238
+68;social media use mood;469239
+68;social media literacy regulation;469240
+68;healthy behaviors;469241
+69;early childhood education;469242
+69;cognitive benefits;469243
+69;social benefits;469244
+69;ece interventions;469245
+69;achievement gaps;469246
+69;disadvantaged populations;469247
+70;customer churn;469248
+70;telecommunication industry;469249
+70;model evaluation;469250
+71;clustering algorithms;469251
+71;image segmentation;469252
+71;performance evaluation;469253
+81;performance evaluation;469253
+83;performance evaluation;469253
+86;performance evaluation;469253
+88;performance evaluation;469253
+89;performance evaluation;469253
+90;performance evaluation;469253
+93;performance evaluation;469253
+116;performance evaluation;469253
+117;performance evaluation;469253
+118;performance evaluation;469253
+119;performance evaluation;469253
+120;performance evaluation;469253
+121;performance evaluation;469253
+122;performance evaluation;469253
+123;performance evaluation;469253
+124;performance evaluation;469253
+125;performance evaluation;469253
+130;performance evaluation;469253
+132;performance evaluation;469253
+138;performance evaluation;469253
+144;performance evaluation;469253
+71;dataset;469254
+81;dataset;469254
+88;dataset;469254
+89;dataset;469254
+93;dataset;469254
+72;air quality;469255
+72;deep learning;469256
+96;deep learning;469256
+131;deep learning;469256
+72;air pollution data;469257
+72;meteorological data;469258
+72;machine learning methods;469259
+73;bayesian approach;469260
+73;recommender systems;469261
+105;recommender systems;469261
+73;uncertainty;469262
+73;user preferences;469263
+131;user preferences;469263
+73;recommendation accuracy;469264
+73;user-item interactions;469265
+73;latent variables;469266
+74;deep reinforcement learning algorithms;469267
+74;continuous control tasks;469268
+74;performance analysis;469269
+74;traditional reinforcement learning methods;469270
+75;fraudulent transactions;469271
+75;machine learning approach;469272
+84;machine learning approach;469272
+91;machine learning approach;469272
+94;machine learning approach;469272
+75;transactional data;469273
+75;performance comparison;469274
+76;performance comparison;469274
+79;performance comparison;469274
+84;performance comparison;469274
+85;performance comparison;469274
+91;performance comparison;469274
+92;performance comparison;469274
+94;performance comparison;469274
+95;performance comparison;469274
+75;rule-based methods;469275
+91;rule-based methods;469275
+94;rule-based methods;469275
+76;stock prices;469276
+76;sentiment analysis;469277
+96;sentiment analysis;469277
+129;sentiment analysis;469277
+152;sentiment analysis;469277
+76;financial news data;469278
+76;time series forecasting methods;469279
+95;time series forecasting methods;469279
+77;renewable energy sources;469280
+77;gis;469281
+77;machine learning;469282
+81;machine learning;469282
+82;machine learning;469282
+109;machine learning;469282
+127;machine learning;469282
+161;machine learning;469282
+77;model performance evaluation;469283
+80;model performance evaluation;469283
+78;electronic health records;469284
+78;natural language processing;469285
+87;natural language processing;469285
+96;natural language processing;469285
+152;natural language processing;469285
+157;natural language processing;469285
+78;relevant information extraction;469286
+78;clinical dataset;469287
+79;object detection;469288
+79;satellite images;469289
+79;deep learning approach;469290
+92;deep learning approach;469290
+79;computer vision methods;469291
+80;customer satisfaction;469292
+80;machine learning techniques;469293
+87;machine learning techniques;469293
+81;cyberattacks detection;469294
+82;time series;469295
+82;statistical modeling;469296
+82;statistics;469297
+82;data science;469298
+157;data science;469298
+83;classification algorithms;469299
+83;medical diagnosis;469300
+83;large-scale medical dataset;469301
+84;user engagement;469302
+84;regression methods;469303
+85;anomaly detection;469304
+94;anomaly detection;469304
+99;anomaly detection;469304
+127;anomaly detection;469304
+85;time series data;469305
+132;time series data;469305
+85;recurrent neural networks;469306
+85;statistical methods;469307
+86;online customer reviews;469308
+86;text mining;469309
+129;text mining;469309
+86;product categories;469310
+87;survey;469311
+100;survey;469311
+112;survey;469311
+135;survey;469311
+142;survey;469311
+87;comparison;469312
+87;strengths and weaknesses;469313
+88;disease outbreaks;469314
+88;social media data;469315
+89;deep learning architectures;469316
+89;image classification;469317
+90;customer behavior;469318
+90;market basket analysis;469319
+90;large-scale retail dataset;469320
+91;fault diagnosis;469321
+91;industrial processes;469322
+92;protein structure prediction;469323
+92;computational methods;469324
+93;user behavior;469325
+93;online communities;469326
+93;social network analysis;469327
+116;social network analysis;469327
+94;credit card transactions;469328
+95;housing prices;469329
+95;multiple regression analysis;469330
+96;online reviews;469331
+96;nlp;469332
+157;nlp;469332
+97;relational databases;469333
+107;relational databases;469333
+113;relational databases;469333
+125;relational databases;469333
+97;graph databases;469334
+116;graph databases;469334
+124;graph databases;469334
+125;graph databases;469334
+138;graph databases;469334
+97;comparative study;469335
+106;comparative study;469335
+110;comparative study;469335
+113;comparative study;469335
+98;distributed database;469336
+102;distributed database;469336
+114;distributed database;469336
+98;in-memory database;469337
+98;real-time data processing;469338
+99;network data;469339
+99;probabilistic graphical models;469340
+100;nosql databases;469341
+107;nosql databases;469341
+119;nosql databases;469341
+135;nosql databases;469341
+100;big data analytics;469342
+158;big data analytics;469342
+161;big data analytics;469342
+101;parallel databases;469343
+101;query processing;469344
+124;query processing;469344
+155;query processing;469344
+156;query processing;469344
+101;performance optimization;469345
+155;performance optimization;469345
+156;performance optimization;469345
+102;internet of things;469346
+114;internet of things;469346
+102;scalability;469347
+123;scalability;469347
+162;scalability;469347
+103;distributed databases;469348
+104;distributed databases;469348
+109;distributed databases;469348
+118;distributed databases;469348
+103;framework;469349
+108;framework;469349
+104;hadoop;469350
+162;hadoop;469350
+167;hadoop;469350
+104;query optimization;469351
+105;graph model;469352
+111;graph model;469352
+105;collaborative filtering;469353
+106;sql;469354
+106;nosql;469355
+107;big data;469356
+111;big data;469356
+145;big data;469356
+146;big data;469356
+147;big data;469356
+150;big data;469356
+152;big data;469356
+153;big data;469356
+154;big data;469356
+156;big data;469356
+159;big data;469356
+160;big data;469356
+163;big data;469356
+165;big data;469356
+168;big data;469356
+108;data warehouses;469357
+108;cloud databases;469358
+112;cloud databases;469358
+109;data partitioning;469359
+110;document-oriented databases;469360
+111;entity resolution;469361
+112;mobile applications;469362
+113;object-oriented databases;469363
+114;data management;469364
+159;data management;469364
+160;data management;469364
+165;data management;469364
+168;data management;469364
+169;data management;469364
+115;spatial databases;469365
+117;spatial databases;469365
+142;spatial databases;469365
+115;cloud infrastructure;469366
+115;database;469367
+116;benchmarking;469368
+119;benchmarking;469368
+116;data modeling;469369
+124;data modeling;469369
+125;data modeling;469369
+135;data modeling;469369
+117;indexing;469370
+132;indexing;469370
+134;indexing;469370
+137;indexing;469370
+138;indexing;469370
+139;indexing;469370
+143;indexing;469370
+117;query response time;469371
+117;data structures;469372
+118;data consistency;469373
+120;data consistency;469373
+122;data consistency;469373
+118;concurrency control;469374
+118;fault tolerance;469375
+120;fault tolerance;469375
+123;fault tolerance;469375
+119;traditional databases;469376
+119;data analytics;469377
+120;database replication;469378
+120;synchronization;469379
+121;graph data;469380
+130;graph data;469380
+121;large-scale data processing;469381
+130;large-scale data processing;469381
+121;distributed computing;469382
+121;graph partitioning;469383
+130;graph partitioning;469383
+122;key-value store;469384
+122;web applications;469385
+122;data access;469386
+123;stream processing;469387
+123;real-time data analytics;469388
+124;multi-level indexing;469389
+125;semantic web;469390
+128;semantic web;469390
+126;spatial data analysis;469391
+126;geographic information systems;469392
+126;data mining;469393
+129;data mining;469393
+161;data mining;469393
+126;pattern recognition;469394
+126;applications;469395
+129;applications;469395
+127;time-series data;469396
+127;neural networks;469397
+127;decision trees;469398
+128;data integration;469399
+128;heterogeneous data sources;469400
+128;ontology;469401
+128;rdf;469402
+130;apache spark;469403
+131;recommendation systems;469404
+133;real-time analytics;469405
+163;real-time analytics;469405
+133;dynamic modeling;469406
+133;data distribution;469407
+134;high-dimensional data;469408
+134;product quantization;469409
+136;similarity search;469410
+136;hashing;469411
+136;large databases;469412
+140;large databases;469412
+137;stream data management;469413
+137;adaptive techniques;469414
+139;multi-dimensional data;469415
+139;efficiency;469416
+143;efficiency;469416
+140;text search;469417
+140;inverted index;469418
+144;inverted index;469418
+141;big data management;469419
+141;hierarchical indexing;469420
+141;tree structure;469421
+142;data indexing;469422
+143;temporal data streams;469423
+144;text analytics;469424
+145;quantum computing;469425
+145;cryptography;469426
+145;quantum key distribution;469427
+145;quantum entanglement;469428
+145;information security;469429
+146;neuroscience;469430
+147;microbiome;469431
+147;probiotics;469432
+147;prebiotics;469433
+147;health;469434
+147;disease;469435
+148;gene editing;469436
+148;crispr-cas9;469437
+151;crispr-cas9;469437
+148;ethics;469438
+154;ethics;469438
+148;genetic engineering;469439
+148;human genome;469440
+149;hydropower;469441
+149;energy policy;469442
+150;public health;469443
+151;gene therapy;469444
+151;genetic disorders;469445
+151;drug delivery;469446
+152;machine translation;469447
+152;speech recognition;469448
+153;agriculture;469449
+153;food security;469450
+153;extreme weather;469451
+153;global warming;469452
+154;bias;469453
+154;accountability;469454
+154;transparency;469455
+155;distributed systems;469456
+162;distributed systems;469456
+167;distributed systems;469456
+155;in-memory technology;469457
+156;cloud computing;469458
+159;cloud computing;469458
+165;cloud computing;469458
+157;data querying;469459
+157;data processing;469460
+159;data processing;469460
+160;data processing;469460
+161;data processing;469460
+163;data processing;469460
+165;data processing;469460
+169;data processing;469460
+158;business intelligence;469461
+158;data analysis;469462
+166;data analysis;469462
+168;data analysis;469462
+158;data visualization;469463
+159;data storage;469464
+160;data storage;469464
+163;data storage;469464
+160;storage technologies;469465
+162;big data processing;469466
+167;big data processing;469466
+163;streaming data;469467
+164;big data security;469468
+164;privacy;469469
+164;data protection;469470
+164;data breaches;469471
+166;big data visualization;469472
+166;information visualization;469473
+166;data representation;469474
+167;parallel computing;469475
+168;healthcare;469476
+169;big data integration;469477
+169;etl;469478
