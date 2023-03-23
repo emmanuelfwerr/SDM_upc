@@ -1,8 +1,11 @@
-# raw and processed data (too large)
+# lab1 - Neo4j raw and processed data (too large)
 Lab1-PropertyGraph/data/neo4j/conf/*
 Lab1-PropertyGraph/data/neo4j/data/*
 Lab1-PropertyGraph/data/neo4j/logs/*
 Lab1-PropertyGraph/data/neo4j/plugins/*
+
+# Lab2 - 
+Lab2-DistributedGraphProcessing/data/
 
 # pycharm and vscode
 */.idea
