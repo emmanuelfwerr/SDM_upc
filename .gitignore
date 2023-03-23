@@ -4,15 +4,14 @@ Lab1-PropertyGraph/data/neo4j/data/*
 Lab1-PropertyGraph/data/neo4j/logs/*
 Lab1-PropertyGraph/data/neo4j/plugins/*
 
-# Lab2 - 
-Lab2-DistributedGraphProcessing/data/
+# Lab2 -
 
 # pycharm and vscode
-*/.idea
-*/.vscode
+.idea
+.vscode
 
 # secret environment variables
-*/env/.env
+.env
 
 # virtual environment
-*/venv
+venv
