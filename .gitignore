@@ -9,7 +9,7 @@ Lab1-PropertyGraph/data/neo4j/plugins/*
 *.vscode
 
 # secret environment variables
-*env/.env
+*/env/.env
 
 # virtual environment
-venv
+*/venv
