@@ -1,8 +1,8 @@
 # raw and processed data (too large)
-data/neo4j/conf/*
-data/neo4j/data/*
-data/neo4j/logs/*
-data/neo4j/plugins/*
+Lab1-PropertyGraph/data/neo4j/conf/*
+Lab1-PropertyGraph/data/neo4j/data/*
+Lab1-PropertyGraph/data/neo4j/logs/*
+Lab1-PropertyGraph/data/neo4j/plugins/*
 
 # pycharm and vscode
 .idea
