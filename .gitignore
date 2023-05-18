@@ -6,6 +6,12 @@ Lab1-PropertyGraph/data/neo4j/plugins/*
 
 # Lab2 -
 
+# Lab3 -
+Lab3-KnowledgeGraph/data/graphdb/conf/*
+Lab3-KnowledgeGraph/data/graphdb/data/*
+Lab3-KnowledgeGraph/data/graphdb/logs/*
+Lab3-KnowledgeGraph/data/graphdb/work/*
+
 # pycharm and vscode
 .idea
 .vscode
