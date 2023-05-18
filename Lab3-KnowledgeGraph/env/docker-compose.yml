@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  graphdb:
+    container_name: GraphDB-SDM
+    image: ontotext/graphdb:10.2.1
+    ports: 
+      - 7200:7200
+      - 7300:7300
+    restart: unless-stopped
+    environment: 
+      GDB_JAVA_OPTS: >-
+        -Xmx2g -Xms2g
+        -Dgraphdb.home=/opt/graphdb/home
+        -Dgraphdb.workbench.maxUploadSize=40000000000
+    volumes:
+      - ../data/graphdb:/opt/graphdb/home

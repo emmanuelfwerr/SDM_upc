@@ -1,0 +1,322 @@
+@prefix : <http://www.semanticweb.org/olayo/ontologies/2023/3/school/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/olayo/ontologies/2023/3/school/> .
+
+<http://graph.org/abox> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://graph.org/abox/accepted_as
+<http://graph.org/abox/accepted_as> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <http://graph.org/abox/Paper> ;
+                                    rdfs:range <http://graph.org/abox/Publication> .
+
+
+###  http://graph.org/abox/accepts_or_rejects
+<http://graph.org/abox/accepts_or_rejects> rdf:type owl:ObjectProperty ;
+                                           rdfs:domain <http://graph.org/abox/Reviewer> ;
+                                           rdfs:range <http://graph.org/abox/Paper> .
+
+
+###  http://graph.org/abox/assigns
+<http://graph.org/abox/assigns> rdf:type owl:ObjectProperty ;
+                                rdfs:domain <http://graph.org/abox/Handlers> ;
+                                rdfs:range <http://graph.org/abox/Reviewer> .
+
+
+###  http://graph.org/abox/handled_by1
+<http://graph.org/abox/handled_by1> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <http://graph.org/abox/Conferences> ;
+                                    rdfs:range <http://graph.org/abox/Chairs> ;
+                                    owl:propertyDisjointWith <http://graph.org/abox/handled_by2> .
+
+
+###  http://graph.org/abox/handled_by2
+<http://graph.org/abox/handled_by2> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <http://graph.org/abox/Journal> ;
+                                    rdfs:range <http://graph.org/abox/Editors> .
+
+
+###  http://graph.org/abox/has
+<http://graph.org/abox/has> rdf:type owl:ObjectProperty ;
+                            rdfs:domain <http://graph.org/abox/Publication> ;
+                            rdfs:range <http://graph.org/abox/Review> .
+
+
+###  http://graph.org/abox/pertains_to
+<http://graph.org/abox/pertains_to> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <http://graph.org/abox/Journal> ,
+                                                <http://graph.org/abox/Paper> ,
+                                                <http://graph.org/abox/Proceeding> ;
+                                    rdfs:range <http://graph.org/abox/Area> .
+
+
+###  http://graph.org/abox/published_in
+<http://graph.org/abox/published_in> rdf:type owl:ObjectProperty ;
+                                     rdfs:domain <http://graph.org/abox/Publication> ;
+                                     rdfs:range <http://graph.org/abox/Proceeding> ,
+                                                <http://graph.org/abox/Volume> .
+
+
+###  http://graph.org/abox/submits
+<http://graph.org/abox/submits> rdf:type owl:ObjectProperty ;
+                                rdfs:domain <http://graph.org/abox/Reviewer> ;
+                                rdfs:range <http://graph.org/abox/Review> .
+
+
+###  http://graph.org/abox/submitted
+<http://graph.org/abox/submitted> rdf:type owl:ObjectProperty ;
+                                  rdfs:domain <http://graph.org/abox/Paper> ;
+                                  rdfs:range <http://graph.org/abox/Venues> .
+
+
+###  http://graph.org/abox/writes
+<http://graph.org/abox/writes> rdf:type owl:ObjectProperty ;
+                               rdfs:domain <http://graph.org/abox/Author> ;
+                               rdfs:range <http://graph.org/abox/Texts> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://graph.org/abox/Name
+<http://graph.org/abox/Name> rdf:type owl:DatatypeProperty ;
+                             rdfs:domain <http://graph.org/abox/Author> ;
+                             rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/area
+<http://graph.org/abox/area> rdf:type owl:DatatypeProperty ;
+                             rdfs:domain <http://graph.org/abox/Area> ;
+                             rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/conferenceID
+<http://graph.org/abox/conferenceID> rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain <http://graph.org/abox/Conferences> ;
+                                     rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/conference_city
+<http://graph.org/abox/conference_city> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <http://graph.org/abox/Conferences> ;
+                                        rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/conference_edition
+<http://graph.org/abox/conference_edition> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <http://graph.org/abox/Conferences> ;
+                                           rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/conference_name
+<http://graph.org/abox/conference_name> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <http://graph.org/abox/Conferences> ;
+                                        rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/conference_time
+<http://graph.org/abox/conference_time> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <http://graph.org/abox/Conferences> ;
+                                        rdfs:range xsd:integer .
+
+
+###  http://graph.org/abox/handlerID
+<http://graph.org/abox/handlerID> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://graph.org/abox/Chairs> ;
+                                  rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/journalID
+<http://graph.org/abox/journalID> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://graph.org/abox/Journal> ;
+                                  rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/journal_name
+<http://graph.org/abox/journal_name> rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain <http://graph.org/abox/Journal> ;
+                                     rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/text_date
+<http://graph.org/abox/text_date> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://graph.org/abox/Texts> ;
+                                  rdfs:range xsd:integer .
+
+
+###  http://graph.org/abox/text_name
+<http://graph.org/abox/text_name> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://graph.org/abox/Publication> ,
+                                              <http://graph.org/abox/Texts> ;
+                                  rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/text_valid
+<http://graph.org/abox/text_valid> rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain <http://graph.org/abox/Paper> ;
+                                   rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/volumeID
+<http://graph.org/abox/volumeID> rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain <http://graph.org/abox/Volume> ;
+                                 rdfs:range xsd:string .
+
+
+###  http://graph.org/abox/volume_date
+<http://graph.org/abox/volume_date> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <http://graph.org/abox/Volume> ;
+                                    rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://graph.org/abox/Area
+<http://graph.org/abox/Area> rdf:type owl:Class ;
+                             rdfs:subClassOf owl:Thing .
+
+
+###  http://graph.org/abox/Author
+<http://graph.org/abox/Author> rdf:type owl:Class ;
+                               rdfs:subClassOf owl:Thing .
+
+
+###  http://graph.org/abox/Chairs
+<http://graph.org/abox/Chairs> rdf:type owl:Class ;
+                               rdfs:subClassOf <http://graph.org/abox/Handlers> ;
+                               owl:disjointWith <http://graph.org/abox/Editors> .
+
+
+###  http://graph.org/abox/Conferences
+<http://graph.org/abox/Conferences> rdf:type owl:Class ;
+                                    rdfs:subClassOf <http://graph.org/abox/Venues> ;
+                                    owl:disjointWith <http://graph.org/abox/Journal> .
+
+
+###  http://graph.org/abox/Demo_paper
+<http://graph.org/abox/Demo_paper> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://graph.org/abox/Paper> ;
+                                   owl:disjointWith <http://graph.org/abox/Journal_paper> .
+
+
+###  http://graph.org/abox/Editors
+<http://graph.org/abox/Editors> rdf:type owl:Class ;
+                                rdfs:subClassOf <http://graph.org/abox/Handlers> .
+
+
+###  http://graph.org/abox/Expert_groups
+<http://graph.org/abox/Expert_groups> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://graph.org/abox/Conferences> .
+
+
+###  http://graph.org/abox/Full_paper
+<http://graph.org/abox/Full_paper> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://graph.org/abox/Paper> ;
+                                   owl:disjointWith <http://graph.org/abox/Journal_paper> .
+
+
+###  http://graph.org/abox/Handlers
+<http://graph.org/abox/Handlers> rdf:type owl:Class ;
+                                 rdfs:subClassOf owl:Thing .
+
+
+###  http://graph.org/abox/Journal
+<http://graph.org/abox/Journal> rdf:type owl:Class ;
+                                rdfs:subClassOf <http://graph.org/abox/Venues> .
+
+
+###  http://graph.org/abox/Journal_paper
+<http://graph.org/abox/Journal_paper> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://graph.org/abox/Paper> ;
+                                      owl:disjointWith <http://graph.org/abox/Poster> ,
+                                                       <http://graph.org/abox/Short_paper> .
+
+
+###  http://graph.org/abox/Paper
+<http://graph.org/abox/Paper> rdf:type owl:Class ;
+                              rdfs:subClassOf <http://graph.org/abox/Texts> ;
+                              owl:disjointWith <http://graph.org/abox/Review> .
+
+
+###  http://graph.org/abox/Poster
+<http://graph.org/abox/Poster> rdf:type owl:Class ;
+                               rdfs:subClassOf <http://graph.org/abox/Paper> .
+
+
+###  http://graph.org/abox/Proceeding
+<http://graph.org/abox/Proceeding> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://graph.org/abox/Expert_groups> ,
+                                                   <http://graph.org/abox/Regular_conferences> ,
+                                                   <http://graph.org/abox/Symposiums> ,
+                                                   <http://graph.org/abox/Workshops> .
+
+
+###  http://graph.org/abox/Publication
+<http://graph.org/abox/Publication> rdf:type owl:Class ;
+                                    rdfs:subClassOf owl:Thing .
+
+
+###  http://graph.org/abox/Regular_conferences
+<http://graph.org/abox/Regular_conferences> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://graph.org/abox/Conferences> .
+
+
+###  http://graph.org/abox/Review
+<http://graph.org/abox/Review> rdf:type owl:Class ;
+                               rdfs:subClassOf <http://graph.org/abox/Texts> .
+
+
+###  http://graph.org/abox/Reviewer
+<http://graph.org/abox/Reviewer> rdf:type owl:Class ;
+                                 rdfs:subClassOf <http://graph.org/abox/Author> .
+
+
+###  http://graph.org/abox/Short_paper
+<http://graph.org/abox/Short_paper> rdf:type owl:Class ;
+                                    rdfs:subClassOf <http://graph.org/abox/Paper> .
+
+
+###  http://graph.org/abox/Symposiums
+<http://graph.org/abox/Symposiums> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://graph.org/abox/Conferences> .
+
+
+###  http://graph.org/abox/Texts
+<http://graph.org/abox/Texts> rdf:type owl:Class ;
+                              rdfs:subClassOf owl:Thing .
+
+
+###  http://graph.org/abox/Venues
+<http://graph.org/abox/Venues> rdf:type owl:Class ;
+                               rdfs:subClassOf owl:Thing .
+
+
+###  http://graph.org/abox/Volume
+<http://graph.org/abox/Volume> rdf:type owl:Class ;
+                               rdfs:subClassOf <http://graph.org/abox/Journal> .
+
+
+###  http://graph.org/abox/Workshops
+<http://graph.org/abox/Workshops> rdf:type owl:Class ;
+                                  rdfs:subClassOf <http://graph.org/abox/Conferences> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#Paper
+owl:Paper rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
