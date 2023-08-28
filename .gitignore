@@ -12,6 +12,12 @@ Lab3-KnowledgeGraph/data/graphdb/data/*
 Lab3-KnowledgeGraph/data/graphdb/logs/*
 Lab3-KnowledgeGraph/data/graphdb/work/*
 
+# Final Project
+Project/data/neo4j/conf/*
+Project/data/neo4j/data/*
+Project/data/neo4j/logs/*
+Project/data/neo4j/plugins/*
+
 # pycharm and vscode
 .idea
 .vscode
